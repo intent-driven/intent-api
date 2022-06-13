@@ -1,0 +1,73 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cat: <http://www.operator.com/Catalog/> .
+@prefix sli: <http://www.sdo1.org/Models/SliceOntology/> .
+@prefix icm: <http://tio.labs.tmforum.org/tio/v1.0.0/IntentCommonModel/> .
+@prefix met: <http://www.sdo2.org/TelecomMetrics/Version_1.0/> .
+@prefix   t: <http://www.w3.org/2006/time#> .
+@prefix  ex: <http://www.example.org/IntentNamespace/> .
+##Intent
+ex:ExampleIntentXYZ
+ a icm:Intent ;
+   rdfs:comment "intent for ordering a service and slice";
+   icm:hasExpectation ex:ExampleIntentXYZ_Exp_delivery,
+                        ex:ExampleIntentXYZ_Exp_property,
+                        ex:ExampleIntentXYZ_Exp_reporting; 
+.
+##Delivery Expectation
+ex:ExampleIntentXYZ_Exp_delivery
+ a icm:DeliveryExpectation ;
+   icm:target _:slice ;
+   icm:params ex:ExampleIntentXYZ_Exp_delivery_Param_type;
+.
+ex:ExampleIntentXYZ_Exp_delivery_Param_type
+ a icm:DeliveryParam ;
+   icm:targetDescription cat:ExampleSlice 
+.
+##Property Expectation
+ex:ExampleIntentXYZ_Exp_property
+ a icm:PropertyExpectation ;
+   icm:target _:slice ;
+   icm:params ex:ExampleIntentXYZ_Exp_property_Param_status , 
+			   ex:ExampleIntentXYZ_Exp_property_Param_latency , 
+               ex:ExampleIntentXYZ_Exp_property_Param_throughput ,
+               ex:ExampleIntentXYZ_Exp_property_Param_availability ;
+.
+ex:ExampleIntentXYZ_Exp_property_Param_status
+ a icm:PropertyParam ;
+   sli:sliceState [ icm:oneOf sli:up, sli:available ] ;
+.
+ex:ExampleIntentXYZ_Exp_property_Param_latency
+ a icm:PropertyParam ;
+   met:latency [ icm:atMost "10 ms" ] ;
+.
+ex:ExampleIntentXYZ_Exp_property_Param_throughput  
+ a icm:PropertyParam ;  
+   met:throughput [ icm:atLeast [ met:value 5 ; met:unit met:unitMBPS  ] ] ;
+.
+ex:ExampleIntentXYZ_Exp_property_Param_availability  
+ a icm:PropertyParam ;  
+   met:availability [ icm:greater [ met:value 99.9; met:unit met:percentage ] ];
+.
+##Reporting Expectation
+ex:ExampleIntentXYZ_Exp_reporting
+ a icm:ReportingExpectation ;
+   icm:target ex:ExampleIntentXYZ ;
+   icm:params ex:ExampleIntentXYZ_Exp_reporting_Param_interval,
+               ex:ExampleIntentXYZ_Exp_reporting_Param_event ;
+.
+ex:ExampleIntentXYZ_Exp_reporting_Param_interval
+ a icm:ReportingParam ;
+   icm:reportingInterval [ a t:Duration ;
+                                t:numericDuration 10 ;
+                                t:temporalUnit t:unitMinute ] .
+ex:ExampleIntentXYZ_Exp_reporting_Param_event              
+ a icm:ReportingParam ; 
+   icm:reportingEvent icm:ReportingIntervalExpired ,
+                        icm:IntentRejected ,
+                        icm:StateComplies ,
+                        icm:StateDegrades ,
+                        icm:HandlingEnded ,
+                        icm:UpdateRejected ,
+                        icm:UpdateFinished  ;
+.

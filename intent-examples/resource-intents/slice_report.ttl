@@ -1,0 +1,67 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix  inv: <http://www.operator.org/Inventory/> .
+@prefix    t: <http://www.w3.org/2006/time#> .
+@prefix  imo: <http://www.tmforum.org/2020/07/IntentManagementOntology/> .
+@prefix icm: <http://tio.labs.tmforum.org/tio/v1.0.0/IntentCommonModel/> .
+@prefix  ex: <http://www.example.org/IntentNamespace/> .
+@prefix cat: <http://www.operator.com/Catalog/> .
+@prefix sli: <http://www.sdo1.org/Models/SliceOntology/> .
+@prefix met: <http://www.sdo2.org/TelecomMetrics/Version_1.0/> .
+
+ex:ExampleIntentReportXYZ
+ a icm:IntentReport ;
+   rdfs:comment "example intent report" ;
+   imo:intentOwner ex:IntentManagerXYZ ;
+   imo:intentHandler ex:IntentManagerABC ;
+   icm:reportsAbout ex:ExampleIntentXYZ ; 
+   icm:reportTimestamp [ t:inXSDDateTimeStamp "2022-12-01T10:30:10+10:00"^^xsd:dateTime ] ;
+   icm:currentIntentHandlingState icm:StateCompliant ;
+   icm:currentIntentUpdateState icm:StateNoUpdate ;
+   icm:reportNumber 42 ;
+   icm:hasExpectationReport
+    [ a icm:DeliveryExpectationReport ;
+        icm:reportsAbout ex:ExampleIntentXYZ_Exp_delivery ;
+        icm:targetReport inv:slice000001 ;
+        icm:paramsCompliant [ a icm:DeliveryParam ; 
+                                icm:reportsAbout ex:ExampleIntentXYZ_Exp_delivery_Param_type ;
+                                icm:targetDescription cat:ExampleSlice ]
+    ] ,
+    [ a icm:PropertyExpectationReport ;
+      icm:reportsAbout ex:ExampleIntentXYZ_Exp_delivery ; 
+      icm:target inv:slice000001 ;
+      icm:paramsCompliant [ a icm:PropertyParam ;
+                            icm:reportsAbout ex:ExampleIntentXYZ_Exp_property_Param_status ; 
+                            sli:sliceState sli:available ]
+    ] ,
+    [ a icm:PropertyExpectationReport ;
+      icm:reportsAbout ex:ExampleIntentXYZ_Exp_property ; 
+      icm:target inv:slice000001 ;
+      icm:paramsCompliant 
+        [ a icm:PropertyParam ;
+          icm:reportsAbout ex:ExampleIntentXYZ_Exp_property_Param_latency ; 
+          met:latency [ met:value 8 ; met:unit met:unitS ] 
+        ] ,
+        [ a icm:PropertyParam ;
+          icm:reportsAbout ex:ExampleIntentXYZ_Exp_property_Param_throughput ; 
+          met:throughput [ met:value 15 ; met:unit met:unitMBPS ]
+        ] ,
+        [ a icm:PropertyParam ;
+          icm:reportsAbout ex:ExampleIntentXYZ_Exp_property_Param_availability ; 
+          met:availability [ met:value 99.93 ; met:unit met:percentage ]
+        ]
+    ] ,
+ [ a icm:ReportingExpectationReport ;
+      icm:reportsAbout ex:ExampleIntentXYZ_Exp_reporting ; 
+      icm:target ex:ExampleIntentXYZ ;
+      icm:paramsCompliant 
+        [ icm:reportsAbout ex:ExampleIntentXYZ_Exp_reporting_Param_interval ;
+          icm:reportingIntervalLeft [ a t:Duration ;
+                                           t:numericDuration 10 ;
+                                           t:temporalUnit t:unitMinute ]
+        ] ,
+        [ icm:reportsAbout ex:ExampleIntentXYZ_Exp_reporting_Param_event  ;
+          icm:reportingEvent icm:reportingIntervalExpired
+        ]
+    ] .
