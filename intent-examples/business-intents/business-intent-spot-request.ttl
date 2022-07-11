@@ -1,0 +1,78 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cat: <http://www.operator.com/Catalog/> .
+@prefix sli: <http://www.sdo1.org/Models/SpotPriceOntology/> .
+@prefix icm: <http://tio.labs.tmforum.org/tio/v1.0.0/IntentCommonModel/> .
+@prefix met: <http://www.sdo2.org/TelecomMetrics/Version_1.0/> .
+@prefix   t: <http://www.w3.org/2006/time#> .
+@prefix  ex: <http://www.example.org/IntentNamespace/> .
+##Intent
+#Business model: spot pricing
+#Package: 10$/day for 1 Gbit /s with SLA assurance
+#Source address - Destination address: aaa-zzz
+#Start Time - End Time: 00:00-24:00
+
+ex:BusinessIntent-SpotPriceRequest
+ a icm:Intent ;
+   rdfs:comment "Spot Pricing-based service ordering";
+   icm:hasExpectation ex:BusinessIntent-SpotPriceRequest_delivery,
+                        ex:BusinessIntent-SpotPriceRequest_property,
+                        ex:BusinessIntent-SpotPriceRequest_reporting; 
+.
+##Delivery Expectation
+ex:BusinessIntent-SpotPriceRequest_delivery
+ a icm:DeliveryExpectation ;
+   icm:target _:spotPriceRequest ;
+   icm:params ex:BusinessIntent-SpotPriceRequest_delivery_Param_type;
+.
+ex:BusinessIntent-SpotPriceRequest_delivery_Param_type
+ a icm:DeliveryParam ;
+   icm:targetDescription cat:ExamplespotPriceRequest
+.
+##Property Expectation
+ex:BusinessIntent-SpotPriceRequest_property
+ a icm:PropertyExpectation ;
+   icm:target _:spotPriceRequest ;
+   icm:params ex:BusinessIntent-SpotPriceRequest_property_Param_ALocation , 
+			   ex:BusinessIntent-SpotPriceRequest_property_Param_ZLocation , 
+               ex:BusinessIntent-SpotPriceRequest_property_Param_throughput ,
+               ex:BusinessIntent-SpotPriceRequest_property_Param_spotPrice ;
+.
+ex:BusinessIntent-SpotPriceRequest_property_Param_ALocation
+ a icm:PropertyParam ;
+   sli:spotPriceRequestState [ icm:oneOf sli:up, sli:available ] ;
+.
+ex:BusinessIntent-SpotPriceRequest_property_Param_ZLocation
+ a icm:PropertyParam ;
+   met:ZLocation [ icm:atMost "10 ms" ] ;
+.
+ex:BusinessIntent-SpotPriceRequest_property_Param_throughput  
+ a icm:PropertyParam ;  
+   met:throughput [ icm:atLeast [ met:value 200 ; met:unit met:GBPS  ] ] ;
+.
+ex:BusinessIntent-SpotPriceRequest_property_Param_spotPrice  
+ a icm:PropertyParam ;  
+   met:spotPrice [ icm:greater [ met:value 10; met:unit met:monetaryAmount ] ];
+.
+##Reporting Expectation
+ex:BusinessIntent-SpotPriceRequest_reporting
+ a icm:ReportingExpectation ;
+   icm:target ex:ExampleIntentXYZ ;
+   icm:params ex:BusinessIntent-SpotPriceRequest_reporting_Param_interval,
+               ex:BusinessIntent-SpotPriceRequest_reporting_Param_event ;
+.
+ex:BusinessIntent-SpotPriceRequest_reporting_Param_interval
+ a icm:ReportingParam ;
+   icm:reportingInterval [ a t:Duration ;
+                                t:numericDuration 10 ;
+                                t:temporalUnit t:unitMinute ] .
+ex:BusinessIntent-SpotPriceRequest_reporting_Param_event              
+ a icm:ReportingParam ; 
+   icm:reportingEvent icm:ReportingIntervalExpired ,
+                        icm:IntentRejected ,
+                        icm:StateComplies ,
+                        icm:StateDegrades ,
+                        icm:HandlingEnded ,
+                        icm:UpdateRejected ,
+                        icm:UpdateFinished  ;
+.
