@@ -11,7 +11,7 @@ See https://github.com/tmforum-rand/Open_API_And_Data_Model/tree/v4.0-Sprint-202
 
 |UC                                                          |Business         |Service                 |Resource                  |
 |------------------------------------------------------------|-----------------|------------------------|--------------------------|
-| Dynamic Pricing of Connectivity Services |1.Spot Pricing   |Service Intent          |[Slice Intent](https://github.com/intent-driven/intent-api/blob/main/intent-examples/resource-intents/slice.ttl)   Note Network Slices are modelled by TMF as ResourceFunctions|
+| Dynamic Pricing of Connectivity Services |[Spot Pricing](https://github.com/intent-driven/intent-api/blob/main/intent-examples/business-intents/catalyst_biz_intent.ttl)   |Service Intent          |[Slice Intent](https://github.com/intent-driven/intent-api/blob/main/intent-examples/resource-intents/slice.ttl)   Note Network Slices are modelled by TMF as ResourceFunctions|
 |                                                            |Goal             |      Service Order (IW)|                          |
 |                                                            |Constraint:      |       SLA Preservation |                          |
 |Sub UseCases                                                |ZTP  (Onboarding)|                        |                          |
