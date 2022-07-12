@@ -1,0 +1,93 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix icm: <http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel/> .
+@prefix imo: <http://tio.models.tmforum.org/tio/v1.0.0/IntentManagementOntology/> .
+@prefix pbi: <http://tio.models.tmforum.org/tio/v1.0.0/ProposalBestIntent/> .
+@prefix cat: <http://www.operator.com/Catalog/> .
+@prefix spot: <http://www.sdo1.org/Models/DynamicpriceOntology/> .
+@prefix met: <http://www.sdo2.org/TelecomMetrics/Version_1.0/> .
+@prefix   t: <http://www.w3.org/2006/time#> .
+@prefix  ex: <http://www.example.org/IntentNamespace/> .
+@prefix iv: <https://tmforum.orv/2021/07/intentValidity/> .
+@prefix itv: <https://tmforum.orv/2021/07/intentTemporalValidity/> .
+
+# --- Intent ----------
+ex:B0_Constraint_Biz_Intent1
+ a icm:Intent ;
+   rdfs:comment "Constraint intent for biz layer";
+   imo:intentOwner ex:Biz_operations;
+   imo:intentHandler ex:Biz_intentHandler;
+   icm:hasExpectation ex:Constraint_Exp_delivery,
+						ex:Constraint_Exp_property,
+                        ex:Constraint_Exp_reporting; 
+
+
+# --- Delivery Expectation ----------
+# the target is the biz intent hanler, how to model it???
+ex:Constraint_Exp_delivery
+ a icm:DeliveryExpectation ;
+   icm:target ex:Biz_intentHandler 
+.
+
+# --- Property Expectation ----------
+ex:Constraint_Exp_property
+ a icm:PropertyExpectation ;
+   icm:target _:service ;
+   icm:params ex:Constraint_Exp_property_L1 , 
+               ex:Constraint_Exp_property_L2 , 
+               ex:Constraint_Exp_property_L3 , 
+			   ex:Constraint_Exp_property_L4 , 
+			   ex:Constraint_Exp_property_L5 ;
+.
+
+# How to link two expectations?  IF... THEM...
+ex:Constraint_Exp_property_L1  
+ a icm:PropertyParam ;  
+   spot:discount [ icm:exactly [ icm:valueBy [ kpi:avail "100%"^^xsd:string ] ] ;
+   icm:hasContext [   met:bandwidth_availability [ icm:atLeast [ icm:valueBy [ kpi:avail "50%"^^xsd:string ] ]
+.
+# Do we need to add At_MOST (ie 40%<=BW availability<50%)
+ex:Constraint_Exp_property_L2  
+ a icm:PropertyParam ;  
+   spot:discount [ icm:exactly [ icm:valueBy [ kpi:avail "80%"^^xsd:string ] ] ;
+   icm:hasContext [   met:bandwidth_availability [ icm:atLeast [ icm:valueBy [ kpi:avail "40%"^^xsd:string ] ]
+.
+ex:Constraint_Exp_property_L3
+ a icm:PropertyParam ;  
+   spot:discount [ icm:exactly [ icm:valueBy [ kpi:avail "50%"^^xsd:string ] ] ;
+   icm:hasContext [   met:bandwidth_availability [ icm:atLeast [ icm:valueBy [ kpi:avail "30%"^^xsd:string ] ]
+.
+ex:Constraint_Exp_property_L4
+ a icm:PropertyParam ;  
+   spot:discount [ icm:exactly [ icm:valueBy [ kpi:avail "20%"^^xsd:string ] ] ;
+   icm:hasContext [   met:bandwidth_availability [ icm:atLeast [ icm:valueBy [ kpi:avail "20%"^^xsd:string ] ]
+.
+ex:Constraint_Exp_property_L4
+ a icm:PropertyParam ;  
+   spot:discount [ icm:exactly [ icm:valueBy [ kpi:avail "0%"^^xsd:string ] ] ;
+   icm:hasContext [   met:bandwidth_availability [ icm:atLeast [ icm:valueBy [ kpi:avail "10%"^^xsd:string ] ]
+.
+
+
+# --- Reporting Expectation ----------
+ex:PriceSensitiveEnterprise_Exp_reporting
+ a icm:ReportingExpectation ;
+   icm:target ex:PriceSensitiveEnterprise_Intent1 ;
+   icm:params ex:PriceSensitiveEnterprise_Exp_reporting_Param_interval,
+               ex:PriceSensitiveEnterprise_Exp_reporting_Param_event ;
+.
+ex:PriceSensitiveEnterprise_Exp_reporting_Param_interval
+ a icm:ReportingParam ;
+   icm:reportingInterval [ a t:Duration ;
+                                t:numericDuration 10 ;
+                                t:temporalUnit t:unitMinute ] .
+ex:PriceSensitiveEnterprise_Exp_reporting_Param_event              
+ a icm:ReportingParam ; 
+   icm:reportingEvent icm:ReportingIntervalExpired ,
+                        icm:IntentRejected ,
+                        icm:StateComplies ,
+                        icm:StateDegrades ,
+                        icm:HandlingEnded ,
+                        icm:UpdateRejected ,
+                        icm:UpdateFinished  ;
+.
