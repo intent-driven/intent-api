@@ -1,0 +1,125 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix icm:  <http://tio.models.tmforum.org/tio/v2.0.0/IntentCommonModel/> .
+@prefix imo:  <http://tio.models.tmforum.org/tio/v1.0.0/IntentManagementOntology/> .
+@prefix cat:  <http://www.operator.com/Catalog/> .
+@prefix met:  <http://www.sdo2.org/TelecomMetrics/Version_1.0/> .
+@prefix kpi:  <http://www.sdo3.org/KPI/Version2/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix inv:  <http://www.operator.org/Inventory/> .
+@prefix t:    <http://www.w3.org/2006/time#> .
+@prefix :     <http://www.operator.org/IntentNamespace/intent20220322_12345/Reports/> .
+
+:PriceSensitiveEnterprise_Biz_IntentReport123
+    a                  icm:IntentReport ;
+    rdfs:comment       "example intent report" ;
+    icm:reportsAbout   :PriceSensitiveEnterprise_Biz_Intent1 ;
+    icm:hasInformation [ a  ReportInformation ;
+
+            imo:owner :IntentManagerBSS ;
+            imo:handler :IntentManagerBSS ;
+    icm:generated [ t:inXSDDateTimeStamp "2022-12-01T10:30:10+10:00"^^xsd:dateTime ] ;
+    icm:handlingState icm:StateCompliant ;
+    icm:updateState icm:StateNoUpdate ;
+    icm:reportNumber 123 ;
+  ] ;
+
+  icm:hasExpectationReport :PriceSensitiveEnterprise_Exp_delivery ,
+                           :PriceSensitiveEnterprise_Exp_property,
+                           :PriceSensitiveEnterprise_Exp_reporting,
+.
+
+--- Targets
+        ----------
+       :T1_slice
+            icm:targetResource inv:slice000001 .
+
+        :T2_service
+            icm:targetResource inv:service000011 .
+
+        :T3_intent
+            icm:targetResource :ExampleIntentXYZ .
+
+--- Expectation Reports
+        ----------
+       :ER1_SliceDelivery
+            a                icm:ExpectationReport ;
+            icm:reportsAbout :Exp1_slice_delivery ;
+            icm:hasTarget    :T1_slice ;
+            icm:compliant    [ a                     icm:DeliveryParameter ;
+                               icm:reportsAbout      :Par1_slice_description ;
+                               icm:targetDescription cat:ExampleSlice ;
+                               icm:reason            icm:ReasonMatchingTargetDescription ; ] ;
+        .
+
+        :ER2_SliceProperty
+            a                icm:ExpectationReport ;
+            icm:reportsAbout :Exp2_slice_property ;
+            icm:hasTarget    :T1_slice ;
+            icm:compliant    [ a                icm:PropertyParameter ;
+                               icm:reportsAbout :Par2_slice_state ;
+                               icm:metric       sli:SliceState ;
+                               icm:value        sli:available ;
+                               icm:reason       icm:ReasonMeetsRequirement ; ] ;
+        .
+
+        :ER3_ServiceDelivery
+            a                icm:ExpectationReport ;
+            icm:reportsAbout :Exp3_service_delivery ;
+            icm:hasTarget    :T2_service ;
+            icm:compliant    [ a                     icm:DeliveryParameter ;
+                               icm:reportsAbout      :Par3_service_description ;
+                               icm:targetDescription cat:ExampleService ;
+                               icm:reason            icm:ReasonMatchingTargetDescription ; ] ;
+        .
+
+        :ER4_ServiceProperty
+            a                icm:ExpectationReport ;
+            icm:reportsAbout :Exp4_service_property ;
+            icm:hasTarget    :T2_service ;
+            icm:compliant    [ a                icm:PropertyParameter ;
+                               icm:reportsAbout :Par4_latency ;
+                               icm:valueBy      [ kpi:latency "8.7 ms"^^xsd:string ] ;
+                               icm:reason       icm:ReasonMeetsRequirement ; ] ;
+                [ a icm:PropertyParameter ;
+                  icm:reportsAbout :Par5_throughput ;
+                  icm:metric met:Throughput ;
+                  icm:value "6.1"^^xsd:decimal ;
+                  icm:hasUnit [ icm:unit "Mbit/s"^^xsd:string ] ;
+                  icm:reason icm:ReasonMeetsRequirement ;
+                ] ;
+                [ a icm:PropertyParameter;
+                  icm:reportsAbout :Par6_availability1 ;
+                  icm:metric met:Availability ;
+                  icm:value "99.93"^^xsd:decimal ;
+                  icm:hasUnit [ icm:unit met:percentage ] ;
+                  icm:reason icm:ReasonMeetsRequirement ;
+                ] ;
+  icm:observed  [ a icm:PropertyParameter;
+                  icm:reportsAbout :Par7_availability2 ;
+                  icm:valueBy [ kpi:avail "99.4%"^^xsd:string ] ] ;
+                  icm:reason icm:ReasonIrrelevantAlternative ;
+                icm:ReasonNotCompliant ] ;
+        .
+
+        :ER5_reporting
+            a                icm:ExpectationReport ;
+            icm:reportsAbout :Exp5_reporting ;
+            icm:hasTarget    :T3_Intent ;
+            icm:compliant    [ a                icm:ReportingParameter ;
+                               icm:reportsAbout :Par9 ;
+                               icm:event        icm:ReportingIntervalExpired ;
+                               icm:hasContext   [ a                         icm:ReportingTimeContext ;
+                                                  icm:reportingIntervalLeft [ a                 t:Duration ;
+                                                                              t:numericDuration "10"^^xsd:integer ;
+                                                                              t:temporalUnit    t:unitMinute ; ] ; ] ;
+                               icm:reason       icm:ReasonReportCreated ; ] ;
+            icm:unknown      [ a                icm:ReportingParameter ;
+                               icm:reportsAbout :Par10, :Par11, :Par12, :Par13, :Par14, :Par15 ;
+                               icm:event        icm:IntentRejected ;
+                               icm:event        icm:StateComplies ;
+                               icm:event        icm:StateDegrades ;
+                               icm:event        icm:HandlingEnded ;
+                               icm:event        icm:UpdateRejected ;
+                               icm:event        icm:UpdateFinished ;
+                               icm:reason       icm:ReasonIrrelevantAlternative ; ] ;
+        .
