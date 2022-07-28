@@ -1,0 +1,147 @@
+# RAN metrics Version 1.0.0
+# baseURI: <http://io.irc.huawei.com/Io/v1.0.0/SliceExtensionModel#> 
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix icm: <http://tio.labs.tmforum.org/tio/v1.0.0/IntentCommonModel#> .
+@prefix : <http://io.irc.huawei.com/Io/v1.0.0/SliceExtensionModel#> .
+
+<http://io.irc.huawei.com/Io/v1.0.0/SliceExtensionModel#>
+   rdf:type owl:Ontology ;
+   rdfs:label "Slice extension for Catalyst"@en ;
+.
+## Objects
+:Metric
+   rdf:type rdfs:Class ;
+   rdfs:label "Metric"@en ;
+   rdfs:comment "This is a metric"@en ;
+.
+
+## Properties
+:maximise 
+   rdf:instanceof rdf:Property ;
+   rdfs:domain icm:ExpectationParam ;
+   rdfs:range icm:ExpectationParam ;
+   rdfs:label "Maximise"@en ;
+   rdfs:comment "The maximise property is used as qualifier to maximise param."@en ;
+.
+:keep 
+   rdf:instanceof rdf:Property ;
+   rdfs:domain icm:ExpectationParam ;
+   rdfs:range icm:ExpectationParam ;
+   rdfs:label "Keep"@en ;
+   rdfs:comment "The keep property is used as qualifier to keep param."@en ;
+.
+
+## Individuals
+:throughputUL
+   rdf:type :Metric ;
+   rdfs:label "throughputUL"@en ;
+   rdfs:literal "throughputUL";
+. 
+:throughputDL
+   rdf:type :Metric ;
+   rdfs:label "throughputDL"@en ;
+   rdfs:literal "throughputDL";
+.   
+:numberofUEs
+   rdf:type :Metric ;
+   rdfs:label "numberofUEs"@en ;
+   rdfs:literal "numberofUEs";
+.   
+
+:nssiId
+   rdf:type :Metric ;
+   rdfs:label "nssiId"@en ;
+   rdfs:literal "nssiId";
+.
+:nssiName
+   rdf:type :Metric ;
+   rdfs:label "nssiName"@en ;
+   rdfs:literal "nssiName";
+.
+:nsiId
+   rdf:type :Metric ;
+   rdfs:label "nsiId"@en ;
+   rdfs:literal "nsiId";
+.
+:numberofUEs
+   rdf:type :Metric ;
+   rdfs:label "numberofUEs"@en ;
+   rdfs:literal "numberofUEs";
+.
+:ueMobilityLevel
+   rdf:type :Metric ;
+   rdfs:label "ueMobilityLevel"@en ;
+   rdfs:literal "ueMobilityLevel";
+.
+
+:areaTrafficDL
+   rdf:type :Metric ;
+   rdfs:label "areaTrafficDL"@en ;
+   rdfs:literal "areaTrafficDL";
+.
+
+:areaTrafficUL
+   rdf:type :Metric ;
+   rdfs:label "areaTrafficUL"@en ;
+   rdfs:literal "areaTrafficUL";
+.
+
+:expDataRateDL
+   rdf:type :Metric ;
+   rdfs:label "expDataRateDL"@en ;
+   rdfs:literal "expDataRateDL";
+.
+
+:expDataRateUL
+   rdf:type :Metric ;
+   rdfs:label "expDataRateUL"@en ;
+   rdfs:literal "expDataRateUL";
+.
+
+:SLA5QI
+   rdf:type :Metric ;
+   rdfs:label "SLA5QI"@en ;
+   rdfs:literal "SLA5QI";
+.
+
+:packetErrorRate
+   rdf:type :Metric ;
+   rdfs:label "packetErrorRate"@en ;
+   rdfs:literal "packetErrorRate";
+.
+
+:packetSize
+   rdf:type :Metric ;
+   rdfs:label "packetSize"@en ;
+   rdfs:literal "packetSize";
+.
+
+:numberofPDUSession
+   rdf:type :Metric ;
+   rdfs:label "numberofPDUSession"@en ;
+   rdfs:literal "numberofPDUSession";
+.
+
+:latencyFromUFPToApplicationServer
+   rdf:type :Metric ;
+   rdfs:label "latencyFromUFPToApplicationServer"@en ;
+   rdfs:literal "latencyFromUFPToApplicationServer";
+.
+
+:missionCritical
+   rdf:type :Metric ;
+   rdfs:label "missionCritical"@en ;
+   rdfs:literal "missionCritical";
+.
+
+:V2XCommunicationMode
+   rdf:type :Metric ;
+   rdfs:label "V2XCommunicationMode"@en ;
+   rdfs:literal "V2XCommunicationMode";
+.
+
+
+

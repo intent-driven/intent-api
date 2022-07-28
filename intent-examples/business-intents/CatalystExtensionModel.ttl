@@ -1,0 +1,19 @@
+# Catalyst Extension
+
+@prefix icm:  <http://tio.labs.tmforum.org/tio/v1.0.0/IntentCommonModel#> .
+@prefix :  <http://tio.labs.tmforum.org/tio/v1.0.0/CatalystExtensionModel#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+
+# Extension for the dashboard to identify what layer is the target of the intent
+# --- Properties ----------
+:layer
+  rdf:type rdf:Property ;
+  rdfs:label "layer"@en ;
+  rdfs:domain icm:Intent ;
+  rdfs:range rdf:Resource ;
+  rdfs:comment "Used to differentiate biz, service and resource layer"@en ;
+.
+
