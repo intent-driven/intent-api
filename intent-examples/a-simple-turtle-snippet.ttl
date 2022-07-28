@@ -1,0 +1,25 @@
+# A self-describing Turtle snippet
+###
+# First some PREFIX definitions, all right-aligned on the `:` ending the prefix
+# The first one defines the most important prefix, that refers to this document, ":"
+###
+PREFIX      :   <#>
+###
+# Then some prefixes for commonly used ontologies, 
+# all alpha-sorted ignoring whitespace, to avoid duplication 
+# and to ease human parsing of this sample dataile
+###
+PREFIX  foaf:   <http://xmlns.com/foaf/0.1/>
+PREFIX  rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+
+###
+# Then some RDF data
+###
+:this     a                  rdfs:Resource ;
+          rdfs:description   """This text is to demonstrate the 
+                                utility of inline whitespace
+                                within Turtle data.""" ;
+          rdfs:comment       "just a bit of text" .
+###
+# And then the document ends.
+###
