@@ -1,0 +1,30 @@
+"service": {
+  "@type": "Service",
+  "state": "active",
+  "serviceType": "CFS",
+  "serviceCharacteristic": [
+      {
+        "id": "452-gh6",
+        "name": "vCPE",
+        "valueType": "object",
+        "value": {
+          "@type": "vCPE",
+          "@schemaLocation": "http://nbi/api/v4/serviceSpecification/ONAPvCPE_Spec/specificationInputSchema",
+          "vCPE_IP": "193.218.236.21",
+          "MaxTxRate": 300,
+          "TransmitPower": "11 dBm",
+          "maxTream": "OFF"
+         }
+      }
+  ],
+    "serviceSpecification":
+    {
+        "@type": "ONAPServiceSpecificationRef",
+        "@schemaLocation":  "http://my.schema/ONAPServiceSpecificationRef.json",
+        "id": "ONAPvCPE_Spec",
+        "href": "http://../serviceSpecification/ONAPvCPE_Spec",
+        "name": "vCPE",
+        "version": "1",
+        "invariantUUID": "456-852-357",
+        "toscaModelURL": "http//..."
+    }
