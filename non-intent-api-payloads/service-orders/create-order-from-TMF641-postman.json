@@ -1,0 +1,41 @@
+{
+  "externalId": "BSS748",
+  "priority": "1",
+  "description": "Service order description",
+  "category": "TMF resource illustration",
+  "requestedStartDate": "2020-08-27T09:37:40.508Z",
+  "requestedCompletionDate": "2020-08-27T09:37:40.508Z",
+  "@type": "ServiceOrder",
+  "serviceOrderItem": [
+    {
+      "id": "1",
+      "action": "add",
+      "@type": "ServiceOrderItem",
+      "service": {
+        "serviceState": "active",
+        "type": "CFS",
+        "serviceCharacteristic": [
+          {
+            "name": "vCPE",
+            "valueType": "object",
+            "value": {
+              "@type": "JSONSpecification",
+              "@schemaLocation": "http://nbi/api/v4/serviceSpecification/ONAPvCPE_Spec/specificationInputSchema",
+              "vCPE_IP": "193.218.236.21",
+              "MaxTxRate": 300,
+              "TransmitPower": "11 dBm",
+              "maxTream": "OFF"
+            }
+          }
+        ],
+        "serviceSpecification": {
+          "id": "ONAPvCPE_Spec",
+          "href": "http://...:serviceSpecification/ONAPvCPE_Spec",
+          "name": "vCPE",
+          "version": "1",
+          "@type": "vCPE"
+        }
+      }
+    }
+  ]
+}

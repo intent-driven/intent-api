@@ -1,0 +1,166 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "cat": "http://www.operator.com/Catalog/",
+    "sli": "http://www.sdo1.org/Models/SpotPriceOntology/",
+    "icm": "http://tio.labs.tmforum.org/tio/v1.0.0/IntentCommonModel/",
+    "met": "http://www.sdo2.org/TelecomMetrics/Version_1.0/",
+    "t": "http://www.w3.org/2006/time#",
+    "ex": "http://www.example.org/IntentNamespace/"
+  },
+  "@graph": [
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest",
+      "@type": "icm:Intent",
+      "rdfs:comment": "Spot Pricing-based service ordering",
+      "icm:hasExpectation": [
+        {
+          "@id": "ex:BusinessIntent-SpotPriceRequest_delivery"
+        },
+        {
+          "@id": "ex:BusinessIntent-SpotPriceRequest_property"
+        },
+        {
+          "@id": "ex:BusinessIntent-SpotPriceRequest_reporting"
+        }
+      ]
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_delivery",
+      "@type": "icm:DeliveryExpectation",
+      "icm:target": {
+        "@id": "_:spotPriceRequest"
+      },
+      "icm:params": {
+        "@id": "ex:BusinessIntent-SpotPriceRequest_delivery_Param_type"
+      }
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_delivery_Param_type",
+      "@type": "icm:DeliveryParam",
+      "icm:targetDescription": {
+        "@id": "cat:ExamplespotPriceRequest"
+      }
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_property",
+      "@type": "icm:PropertyExpectation",
+      "icm:target": {
+        "@id": "_:spotPriceRequest"
+      },
+      "icm:params": [
+        {
+          "@id": "ex:BusinessIntent-SpotPriceRequest_property_Param_ALocation"
+        },
+        {
+          "@id": "ex:BusinessIntent-SpotPriceRequest_property_Param_ZLocation"
+        },
+        {
+          "@id": "ex:BusinessIntent-SpotPriceRequest_property_Param_throughput"
+        },
+        {
+          "@id": "ex:BusinessIntent-SpotPriceRequest_property_Param_spotPrice"
+        }
+      ]
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_property_Param_ALocation",
+      "@type": "icm:PropertyParam",
+      "sli:spotPriceRequestState": {
+        "icm:oneOf": [
+          {
+            "@id": "sli:up"
+          },
+          {
+            "@id": "sli:available"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_property_Param_ZLocation",
+      "@type": "icm:PropertyParam",
+      "met:ZLocation": {
+        "icm:atMost": "10 ms"
+      }
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_property_Param_throughput",
+      "@type": "icm:PropertyParam",
+      "met:throughput": {
+        "icm:atLeast": {
+          "met:value": 200,
+          "met:unit": {
+            "@id": "met:GBPS"
+          }
+        }
+      }
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_property_Param_spotPrice",
+      "@type": "icm:PropertyParam",
+      "met:spotPrice": {
+        "icm:greater": {
+          "met:value": 10,
+          "met:unit": {
+            "@id": "met:monetaryAmount"
+          }
+        }
+      }
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_reporting",
+      "@type": "icm:ReportingExpectation",
+      "icm:target": {
+        "@id": "ex:ExampleIntentXYZ"
+      },
+      "icm:params": [
+        {
+          "@id": "ex:BusinessIntent-SpotPriceRequest_reporting_Param_interval"
+        },
+        {
+          "@id": "ex:BusinessIntent-SpotPriceRequest_reporting_Param_event"
+        }
+      ]
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_reporting_Param_interval",
+      "@type": "icm:ReportingParam",
+      "icm:reportingInterval": {
+        "@type": "t:Duration",
+        "t:numericDuration": 10,
+        "t:temporalUnit": {
+          "@id": "t:unitMinute"
+        }
+      }
+    },
+    {
+      "@id": "ex:BusinessIntent-SpotPriceRequest_reporting_Param_event",
+      "@type": "icm:ReportingParam",
+      "icm:reportingEvent": [
+        {
+          "@id": "icm:ReportingIntervalExpired"
+        },
+        {
+          "@id": "icm:IntentRejected"
+        },
+        {
+          "@id": "icm:StateComplies"
+        },
+        {
+          "@id": "icm:StateDegrades"
+        },
+        {
+          "@id": "icm:HandlingEnded"
+        },
+        {
+          "@id": "icm:UpdateRejected"
+        },
+        {
+          "@id": "icm:UpdateFinished"
+        }
+      ]
+    }
+  ]
+}
