@@ -1,0 +1,492 @@
+{
+	"info": {
+		"_postman_id": "a88db50c-7d76-4e61-beb0-c02f58795538",
+		"name": "PoC IDAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11955737"
+	},
+	"item": [
+		{
+			"name": "CATALYST SLICE - NEST-EMBB and VIDEOSTREAMING",
+			"item": [
+				{
+					"name": "Aux",
+					"item": [
+						{
+							"name": "1A.- ADD - ACTIVATE/ALLOCATE SLICE - NEST-EMBB for VideoStraming - RAN3 - CN3 - TN2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/iway-service-order-post-v1-hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"4\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"source\": \"POSTMAN\",\n    \"orderType\": \"CREATE\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"New\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"characteristics\": [\n                    {\n                        \"name\": \"delayTolerance\",\n                        \"value\": \"supported\"\n                    },\n                    {\n                        \"name\": \"ueMobilityLevel\",\n                        \"value\": \"5\"\n                    },\n                    {\n                        \"name\": \"availability\",\n                        \"value\": \"999900\"\n                    },\n                    {\n                        \"name\": \"countries\",\n                        \"value\": \"Portugal\"\n                    },\n                    {\n                        \"name\": \"regions\",\n                        \"value\": \"Lisboa\"\n                    },\n                    {\n                        \"name\": \"zones\",\n                        \"value\": \"Zone1\"\n                    },\n                    {\n                        \"name\": \"sliceType\",\n                        \"value\": \"EMBB\"\n                    },\n                    {\n                        \"name\": \"userEquipmentMaxDevices\",\n                        \"value\": \"700\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputSlice\",\n                        \"value\": \"3500\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"sampleFrequency\",\n                        \"value\": \"234\"\n                    },\n                    {\n                        \"name\": \"deviceVelocity\",\n                        \"value\": \"10\"\n                    },\n                    {\n                        \"name\": \"positioningAccuracy\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"positioningFrequency\",\n                        \"value\": \"30\"\n                    },\n                    {\n                        \"name\": \"radioSpectrum\",\n                        \"value\": \"5GNR_n01\"\n                    },\n                    {\n                        \"name\": \"SLA5QI\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"V2XCommunicationMode\",\n                        \"value\": \"NO\"\n                    },\n                    {\n                        \"name\": \"packetErrorRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"maxPacketLossRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputMaxSlice\",\n                        \"value\": \"100000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputMaxSlice\",\n                        \"value\": \"100\"\n                    },\n                    {\n                        \"name\": \"maxPacketSize\",\n                        \"value\": \"1500\"\n                    },\n                    {\n                        \"name\": \"latencyFromUFPToApplicationServer\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"missionCritical\",\n                        \"value\": \"No\"\n                    },\n                    {\n                        \"name\": \"userEquipmentDeviceDensity\",\n                        \"value\": \"12\"\n                    },\n                    {\n                        \"name\": \"PDUSessionsMax\",\n                        \"value\": \"123\"\n                    },\n                    {\n                        \"name\": \"authenticationAndAuthorization\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"NBIOT\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"nonIPTrafficSupport\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"userManagementOpenness\",\n                        \"value\": \"false\"\n                    }\n                ],\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": \"1\"\n        },\n        {\n            \"action\": \"Activate\",\n            \"service\": {\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\",\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                }\n            },\n            \"id\": \"2\",\n            \"orderItemRelationships\": [\n                {\n                    \"id\": \"1\",\n                    \"name\": \"slice\",\n                    \"type\": \"DEPENDENCY\"\n                }\n            ]\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Symphonica}}/service-order-manager/api/service-orders/",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"service-order-manager",
+										"api",
+										"service-orders",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1C.- ADD - ACTIVATE SLICE - NEST-EMBB for VideoStraming - RAN3 - CN3 - TN2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/iway-service-order-post-v1-hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"4\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"source\": \"POSTMAN\",\n    \"orderType\": \"CREATE\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"Activate\",\n            \"service\": {\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\",\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                }\n            }\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Symphonica}}/service-order-manager/api/service-orders/",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"service-order-manager",
+										"api",
+										"service-orders",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2B.- DELETE - DEACTIVATE SLICE - NEST-EMBB for VideoStreaming",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/iway-service-order-post-v1-hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"1\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"orderType\": \"TERMINATE\",\n    \"source\": \"POSTMAN\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"Deactivate\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": 1,\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Symphonica}}/service-order-manager/api/service-orders/",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"service-order-manager",
+										"api",
+										"service-orders",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2A.- DELETE - DEACTIVATE/DEALLOCATE SLICE - NEST-EMBB for VideoStreaming",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/iway-service-order-post-v1-hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"1\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"orderType\": \"TERMINATE\",\n    \"source\": \"POSTMAN\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"Deactivate\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": 1,\n            \"orderItemRelationships\": []\n        },\n        {\n            \"action\": \"Remove\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": 2,\n            \"orderItemRelationships\": [\n                {\n                    \"id\": \"1\",\n                    \"type\": \"DEPENDENCY\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Symphonica}}/service-order-manager/api/service-orders/",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"service-order-manager",
+										"api",
+										"service-orders",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "0.- LoginSSO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"TOKENSSO\", JSON.parse(responseBody)._embedded.session.token);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{user}}\",\r\n  \"password\": \"{{pass}}\",\r\n  \"source\": \"{{origin}}\",\r\n  \"idOrigin\": \"0.0.0.0\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL_Symphonica}}/sso_rest/authentication/login",
+							"host": [
+								"{{URL_Symphonica}}"
+							],
+							"path": [
+								"sso_rest",
+								"authentication",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1B.- ADD - ALLOCATE SLICE - NEST-EMBB for VideoStraming - RAN3 - CN3 - TN2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Organization-Code",
+								"value": "{{OrganizationCode}}"
+							},
+							{
+								"key": "X-Authorization",
+								"value": "{{TOKENSSO}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/iway-service-order-post-v1-hal+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"4\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"source\": \"POSTMAN\",\n    \"orderType\": \"CREATE\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"New\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"characteristics\": [\n                    {\n                        \"name\": \"delayTolerance\",\n                        \"value\": \"supported\"\n                    },\n                    {\n                        \"name\": \"ueMobilityLevel\",\n                        \"value\": \"5\"\n                    },\n                    {\n                        \"name\": \"availability\",\n                        \"value\": \"999900\"\n                    },\n                    {\n                        \"name\": \"countries\",\n                        \"value\": \"Portugal\"\n                    },\n                    {\n                        \"name\": \"regions\",\n                        \"value\": \"Lisboa\"\n                    },\n                    {\n                        \"name\": \"zones\",\n                        \"value\": \"Zone1\"\n                    },\n                    {\n                        \"name\": \"sliceType\",\n                        \"value\": \"EMBB\"\n                    },\n                    {\n                        \"name\": \"userEquipmentMaxDevices\",\n                        \"value\": \"700\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputSlice\",\n                        \"value\": \"3500\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"sampleFrequency\",\n                        \"value\": \"234\"\n                    },\n                    {\n                        \"name\": \"deviceVelocity\",\n                        \"value\": \"10\"\n                    },\n                    {\n                        \"name\": \"positioningAccuracy\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"positioningFrequency\",\n                        \"value\": \"30\"\n                    },\n                    {\n                        \"name\": \"radioSpectrum\",\n                        \"value\": \"5GNR_n01\"\n                    },\n                    {\n                        \"name\": \"SLA5QI\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"V2XCommunicationMode\",\n                        \"value\": \"NO\"\n                    },\n                    {\n                        \"name\": \"packetErrorRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"maxPacketLossRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputMaxSlice\",\n                        \"value\": \"100000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputMaxSlice\",\n                        \"value\": \"100\"\n                    },\n                    {\n                        \"name\": \"maxPacketSize\",\n                        \"value\": \"1500\"\n                    },\n                    {\n                        \"name\": \"latencyFromUFPToApplicationServer\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"missionCritical\",\n                        \"value\": \"No\"\n                    },\n                    {\n                        \"name\": \"userEquipmentDeviceDensity\",\n                        \"value\": \"12\"\n                    },\n                    {\n                        \"name\": \"PDUSessionsMax\",\n                        \"value\": \"123\"\n                    },\n                    {\n                        \"name\": \"authenticationAndAuthorization\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"NBIOT\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"nonIPTrafficSupport\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"userManagementOpenness\",\n                        \"value\": \"false\"\n                    }\n                ],\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": \"1\"\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Symphonica}}/service-order-manager/api/service-orders/",
+							"host": [
+								"{{URL_Symphonica}}"
+							],
+							"path": [
+								"service-order-manager",
+								"api",
+								"service-orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2B.- DELETE - DEALLOCATE SLICE - NEST-EMBB for VideoStreaming",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Organization-Code",
+								"value": "{{OrganizationCode}}"
+							},
+							{
+								"key": "X-Authorization",
+								"value": "{{TOKENSSO}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/iway-service-order-post-v1-hal+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"1\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"orderType\": \"TERMINATE\",\n    \"source\": \"POSTMAN\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"Remove\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": 1\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Symphonica}}/service-order-manager/api/service-orders/",
+							"host": [
+								"{{URL_Symphonica}}"
+							],
+							"path": [
+								"service-order-manager",
+								"api",
+								"service-orders",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RIMF - TMF921",
+			"item": [
+				{
+					"name": "Post Intent",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"statusChangeDate\": \"2022-07-23T04:56:07.000+00:00\",\r\n  \"expression\": {\r\n    \"iri\": \"iri\",\r\n    \"@baseType\": \"@baseType\",\r\n    \"@type\": \"@type\",\r\n    \"expressionLanguage\":\"[\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b0\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://www.w3.org/2006/time#Instant\\\"\\r\\n    ],\\r\\n    \\\"http://www.w3.org/2006/time#inXSDDateTimeStamp\\\": [\\r\\n      {\\r\\n        \\\"@value\\\": \\\"2022-12-01T10:30:10+10:00\\\",\\r\\n        \\\"@type\\\": \\\"http://www.w3.org/2001/XMLSchema#dateTime\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b1\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b2\\\",\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#atMost\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b4\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b3\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://www.w3.org/2006/time#Duration\\\"\\r\\n    ],\\r\\n    \\\"http://www.w3.org/2006/time#numericDuration\\\": [\\r\\n      {\\r\\n        \\\"@value\\\": \\\"1\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://www.w3.org/2006/time#temporalUnit\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.w3.org/2006/time#unitHour\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b4\\\",\\r\\n    \\\"http://www.sdo1.org/Models/DynamicpriceOntology#value\\\": [\\r\\n      {\\r\\n        \\\"@value\\\": \\\"10\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://www.sdo1.org/Models/DynamicpriceOntology#unit\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.sdo1.org/Models/DynamicpriceOntology#unitDollarHour\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b5\\\",\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#atLeast\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b6\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b6\\\",\\r\\n    \\\"http://www.sdo2.org/TelecomMetrics/Version_1.0#value\\\": [\\r\\n      {\\r\\n        \\\"@value\\\": \\\"1\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://www.sdo2.org/TelecomMetrics/Version_1.0#unit\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.sdo2.org/TelecomMetrics/Version_1.0#unitGBPS\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b7\\\",\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#exactly\\\": [\\r\\n      {\\r\\n        \\\"@value\\\": \\\"locationA\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b8\\\",\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#exactly\\\": [\\r\\n      {\\r\\n        \\\"@value\\\": \\\"locationB\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"_:b9\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://www.w3.org/2006/time#Duration\\\"\\r\\n    ],\\r\\n    \\\"http://www.w3.org/2006/time#numericDuration\\\": [\\r\\n      {\\r\\n        \\\"@value\\\": 10\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://www.w3.org/2006/time#temporalUnit\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.w3.org/2006/time#unitMinute\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#DeliveryExpectation\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#DeliveryParam\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#HandlingEnded\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#Intent\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#IntentRejected\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#PropertyExpectation\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#PropertyParam\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#ReportingExpectation\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#ReportingIntervalExpired\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#ReportingParam\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#StateComplies\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#StateDegrades\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#UpdateFinished\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#UpdateRejected\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/ProposalBestIntent#ProposalExpectation\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/ProposalBestIntent#ProposalParam\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/ProposalBestIntent#ProposeImmediately\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#B1_PSE_Biz_Intent1\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#Intent\\\"\\r\\n    ],\\r\\n    \\\"http://www.w3.org/2000/01/rdf-schema#comment\\\": [\\r\\n      {\\r\\n        \\\"@value\\\": \\\"Intent for ordering connectivity service via dynamic pricing\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentManagementOntology#intentOwner\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#IntentManagerXYZ\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://tio.labs.tmforum.org/tio/v1.0.0/CatalystExtensionModel#layer\\\": [\\r\\n      {\\r\\n        \\\"@value\\\": \\\"business\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#hasExpectation\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_delivery\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_proposal\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_reporting\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"https://tmforum.org/2021/07/intentValidity#hasValidity\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_temporalvalidity\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#IntentManagerXYZ\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_delivery\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#DeliveryExpectation\\\"\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#target\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b1\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#params\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_delivery_Param_type\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_delivery_Param_type\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#DeliveryParam\\\"\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#targetDescription\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.operator.com/Catalog#ConnectivityService_DynamicPrice\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#PropertyExpectation\\\"\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#target\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b1\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#params\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property_Param_bandwidth\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property_Param_fromLocation\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property_Param_toLocation\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property_Param_bandwidth\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#PropertyParam\\\"\\r\\n    ],\\r\\n    \\\"http://www.sdo2.org/TelecomMetrics/Version_1.0#bandwidth\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b5\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property_Param_fromLocation\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#PropertyParam\\\"\\r\\n    ],\\r\\n    \\\"http://www.sdo1.org/Models/DynamicpriceOntology#startLocation\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b7\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property_Param_price\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/ProposalBestIntent#ProposalParam\\\"\\r\\n    ],\\r\\n    \\\"http://www.sdo1.org/Models/DynamicpriceOntology#price\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b2\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/ProposalBestIntent#proposingTime\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/ProposalBestIntent#ProposeImmediately\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/ProposalBestIntent#proposingFrequency\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b3\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property_Param_toLocation\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#PropertyParam\\\"\\r\\n    ],\\r\\n    \\\"http://www.sdo1.org/Models/DynamicpriceOntology#endLocation\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b8\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_proposal\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/ProposalBestIntent#ProposalExpectation\\\"\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#target\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b1\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#params\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_property_Param_price\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_reporting\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#ReportingExpectation\\\"\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#target\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#B1_PSE_Biz_Intent1\\\"\\r\\n      }\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#params\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_reporting_Param_interval\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_reporting_Param_event\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_reporting_Param_event\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#ReportingParam\\\"\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#reportingEvent\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#ReportingIntervalExpired\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#IntentRejected\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#StateComplies\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#StateDegrades\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#HandlingEnded\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#UpdateRejected\\\"\\r\\n      },\\r\\n      {\\r\\n        \\\"@id\\\": \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#UpdateFinished\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_Exp_reporting_Param_interval\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#ReportingParam\\\"\\r\\n    ],\\r\\n    \\\"http://tio.models.tmforum.org/tio/v1.0.0/IntentCommonModel#reportingInterval\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b9\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.example.org/IntentNamespace#PSE_temporalvalidity\\\",\\r\\n    \\\"@type\\\": [\\r\\n      \\\"https://tmforum.org/2021/07/intentTemporalValidity#TemporalValidity\\\"\\r\\n    ],\\r\\n    \\\"http://www.w3.org/2006/time#after\\\": [\\r\\n      {\\r\\n        \\\"@id\\\": \\\"_:b0\\\"\\r\\n      }\\r\\n    ]\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.operator.com/Catalog#ConnectivityService_DynamicPrice\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.sdo1.org/Models/DynamicpriceOntology#unitDollarHour\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.sdo2.org/TelecomMetrics/Version_1.0#unitGBPS\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.w3.org/2006/time#Duration\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.w3.org/2006/time#Instant\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.w3.org/2006/time#unitHour\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"http://www.w3.org/2006/time#unitMinute\\\"\\r\\n  },\\r\\n  {\\r\\n    \\\"@id\\\": \\\"https://tmforum.org/2021/07/intentTemporalValidity#TemporalValidity\\\"\\r\\n  }\\r\\n]\",\r\n    \"@schemaLocation\": \"http://www.example.org/IntentNamespace\"\r\n  },\r\n  \"lifecycleStatus\": \"Created\",\r\n  \"@baseType\": \"@baseType\",\r\n  \"validFor\": {\r\n    \"startDateTime\": \"2022-04-12T23:20:50.52Z\",\r\n    \"endDateTime\": \"2023-04-12T23:20:50.52Z\"\r\n  },\r\n  \"@type\": \"Intent\",\r\n  \"lastUpdate\": \"2022-01-23T04:56:07.000+00:00\",\r\n  \"name\": \"B1_Catalyst_Biz_Intent\",\r\n  \"description\": \"B1_Catalyst_Biz_Intent\",\r\n  \"creationDate\": \"2022-01-23T04:56:07.000+00:00\",\r\n  \"@schemaLocation\": \"http://www.example.org/IntentNamespace\",\r\n  \"version\": \"1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8081/tmf-api/intent/v4/intent",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8081",
+							"path": [
+								"tmf-api",
+								"intent",
+								"v4",
+								"intent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Intent",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.220.239.92:8092/tmf-api/intent/v4/intent/86369932-f22a-422c-bb3d-588abe4e47ca",
+							"protocol": "http",
+							"host": [
+								"10",
+								"220",
+								"239",
+								"92"
+							],
+							"port": "8092",
+							"path": [
+								"tmf-api",
+								"intent",
+								"v4",
+								"intent",
+								"86369932-f22a-422c-bb3d-588abe4e47ca"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
