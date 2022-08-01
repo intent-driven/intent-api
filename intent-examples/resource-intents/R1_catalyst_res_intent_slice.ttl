@@ -17,8 +17,9 @@
 # --- Intent ----------
 ex:R1_PSE_Res_Slice_Intent1
  a icm:Intent ;
-   rdfs:comment "Intent for ordering connectivity via slice";
+   rdfs:comment "'Intent for ordering connectivity via slice'";
    imo:intentOwner ex:IntentManagerXYZ_S;
+   cem:layer "'resource'";
    icm:hasExpectation ex:PSE_Exp_R1Slice_delivery,
                          ex:PSE_Exp_R1Slice_property,
                          ex:PSE_Exp_R1Slice_reporting; 
@@ -26,22 +27,22 @@ ex:R1_PSE_Res_Slice_Intent1
 ##Delivery Expectation
 ex:PSE_Exp_R1Slice_delivery
  a icm:DeliveryExpectation ;
-   icm:target _:slice ;
+   icm:target _:resource_slice ;
    icm:params ex:PSE_Exp_R1Slice_delivery_Param_type;
 .
 ex:PSE_Exp_R1Slice_delivery_Param_type
  a icm:DeliveryParam ;
-   icm:targetDescription cat:Slice_NEST_eMBB 
+   icm:targetDescription cat:Slice_NEST_eMBB;
 .
 
 ##Property Expectation
 ex:PSE_Exp_R1Slice_property
  a icm:PropertyExpectation ;
-   icm:target _:slice ;
+   icm:target _:resource_slice ;
    icm:params ex:PSE_Exp_R1Slice_property_Param_nssiId , 
                ex:PSE_Exp_R1Slice_property_Param_nssiName , 
                ex:PSE_Exp_R1Slice_property_Param_nsiId , 
-			   ex:PSE_Exp_R1Slice_property_Param_latency , 
+               ex:PSE_Exp_R1Slice_property_Param_latency , 
                ex:PSE_Exp_R1Slice_property_Param_ue ,
                ex:PSE_Exp_R1Slice_property_Param_availability ,
                ex:PSE_Exp_R1Slice_property_Param_throughputUL ,
@@ -61,83 +62,83 @@ ex:PSE_Exp_R1Slice_property
 .
 ex:PSE_Exp_R1Slice_property_Param_nssiId
  a icm:PropertyParam ;
-   sli:nssiId [ icm:value "NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G"^^xsd:string ] ;
+   sli:nssiId [ icm:value "'NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G'"^^xsd:string ] ;
 .
 ex:PSE_Exp_R1Slice_property_Param_nssiName
  a icm:PropertyParam ;
-   sli:nssiName [ icm:value "NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G"^^xsd:string ] ;
+   sli:nssiName [ icm:value "'NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G'"^^xsd:string ] ;
 .
 ex:PSE_Exp_R1Slice_property_Param_nsiId
  a icm:PropertyParam ;
-   sli:nsiId [ icm:value "NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G"^^xsd:string ] ;
+   sli:nsiId [ icm:value "'NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G'"^^xsd:string ] ;
 .
 ex:PSE_Exp_R1Slice_property_Param_latency
  a icm:PropertyParam ;
-   met:latency [ icm:atMost "12 ms" ] ;
+   met:latency [ icm:atMost "'12 ms'" ] ;
 .
 ex:PSE_Exp_R1Slice_property_Param_ue
  a icm:PropertyParam ;
-   sli:numberofUEs [ icm:atMost "10000" ] ;
+   sli:numberofUEs [ icm:atMost "'10000'" ] ;
 .
 ex:PSE_Exp_R1Slice_property_Param_throughputUL  
  a icm:PropertyParam ;  
-   sli:throughputUL [ icm:atLeast [ met:value "100" ; met:unit met:unitMBPS  ] ] ;
+   sli:throughputUL [ icm:atLeast [ met:value "'100'" ; met:unit met:unitMBPS  ] ] ;
 .
 ex:PSE_Exp_R1Slice_property_Param_throughputDL  
  a icm:PropertyParam ;  
-   sli:throughputDL [ icm:atLeast [ met:value "100000" ; met:unit met:unitMBPS  ] ] ;
+   sli:throughputDL [ icm:atLeast [ met:value "'100000'" ; met:unit met:unitMBPS  ] ] ;
 .
 ex:PSE_Exp_R1Slice_property_Param_availability  
  a icm:PropertyParam ;  
-   met:availability [ icm:greater [ met:value "99.99"; met:unit met:percentage ] ];
+   met:availability [ icm:greater [ met:value "'99.99'"; met:unit met:percentage ] ];
 .
 ex:PSE_Exp_R1Slice_property_Param_ueMobilityLevel  
  a icm:PropertyParam ;  
-   sli:ueMobilityLevel [ icm:value "10"^^xsd:string ];
+   sli:ueMobilityLevel [ icm:value "'10'"^^xsd:string ];
 .
 ex:PSE_Exp_R1Slice_property_Param_areaTrafficDL 
  a icm:PropertyParam ;  
-   sli:areaTrafficDL [ icm:atMost [ met:value "100000" ; met:unit met:unitMBPS  ] ];
+   sli:areaTrafficDL [ icm:atMost [ met:value "'100000'" ; met:unit met:unitMBPS  ] ];
 .
 ex:PSE_Exp_R1Slice_property_Param_areaTrafficUL 
  a icm:PropertyParam ;  
-   met:areaTrafficUL [ icm:atMost [ met:value "100" ; met:unit met:unitMBPS  ] ];
+   met:areaTrafficUL [ icm:atMost [ met:value "'100'" ; met:unit met:unitMBPS  ] ];
 .
 ex:PSE_Exp_R1Slice_property_Param_expDataRateDL 
  a icm:PropertyParam ;  
-   sli:expDataRateDL [ icm:atMost [ met:value "100000" ; met:unit met:unitMBPS  ] ];
+   sli:expDataRateDL [ icm:atMost [ met:value "'100000'" ; met:unit met:unitMBPS  ] ];
 .
 ex:PSE_Exp_R1Slice_property_Param_expDataRateDL 
  a icm:PropertyParam ;  
-   sli:expDataRateUL [ icm:atMost [ met:value "100" ; met:unit met:unitMBPS  ] ];
+   sli:expDataRateUL [ icm:atMost [ met:value "'100'" ; met:unit met:unitMBPS  ] ];
 .
 ex:PSE_Exp_R1Slice_property_Param_SLA5QI 
  a icm:PropertyParam ;  
-   sli:SLA5QI [ icm:value "1"^^xsd:string  ];
+   sli:SLA5QI [ icm:value "'1'"^^xsd:string  ];
 .
 ex:PSE_Exp_R1Slice_property_Param_packetErrorRate 
  a icm:PropertyParam ;  
-   sli:packetErrorRate [ icm:value "Premium"^^xsd:string  ];
+   sli:packetErrorRate [ icm:value "'Premium'"^^xsd:string  ];
 .
 ex:PSE_Exp_R1Slice_property_Param_packetSize 
  a icm:PropertyParam ;  
-   sli:packetSize [ icm:atMost [ met:value "1500" ; met:unit met:unitByte  ]  ];
+   sli:packetSize [ icm:atMost [ met:value "'1500'" ; met:unit met:unitByte  ]  ];
 .
 ex:PSE_Exp_R1Slice_property_Param_numberofPDUSession 
  a icm:PropertyParam ;  
-   sli:numberofPDUSession [ icm:value "123"^^xsd:string  ];
+   sli:numberofPDUSession [ icm:value "'123'"^^xsd:string  ];
 .
 ex:PSE_Exp_R1Slice_property_Param_latencyFromUFPToApplicationServer 
  a icm:PropertyParam ;  
-   sli:latencyFromUFPToApplicationServer [ icm:atMost "1 ms"  ];
+   sli:latencyFromUFPToApplicationServer [ icm:atMost "'1 ms'"  ];
 .
 ex:PSE_Exp_R1Slice_property_Param_missionCritical 
  a icm:PropertyParam ;  
-   sli:missionCritical [ icm:value "No"^^xsd:string ];
+   sli:missionCritical [ icm:value "'No'"^^xsd:string ];
 .
 ex:PSE_Exp_R1Slice_property_Param_V2XCommunicationMode 
  a icm:PropertyParam ;  
-   sli:V2XCommunicationMode [  icm:value "No"^^xsd:string ];
+   sli:V2XCommunicationMode [  icm:value "'No'"^^xsd:string ];
 .
 
 ##Reporting Expectation
@@ -150,7 +151,7 @@ ex:PSE_Exp_R1Slice_reporting
 ex:PSE_Exp_R1Slice_reporting_Param_interval
  a icm:ReportingParam ;
    icm:reportingInterval [ a t:Duration ;
-                                t:numericDuration 10 ;
+                                t:numericDuration "'10'" ;
                                 t:temporalUnit t:unitMinute ] .
 ex:PSE_Exp_R1Slice_reporting_Param_event              
  a icm:ReportingParam ; 
@@ -162,4 +163,3 @@ ex:PSE_Exp_R1Slice_reporting_Param_event
                         icm:UpdateRejected ,
                         icm:UpdateFinished  ;
 .
-

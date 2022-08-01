@@ -16,67 +16,78 @@
 
 # --- Intent Report ----------
 ##IntentReport
-ex:B1_PriceSensitiveEnterprise_Biz_Intent1_1
+ex:B1_PSE_Biz_Intent1_Report_1
  a icm:IntentReport ;
-   rdfs:comment "ntent report" ;
+   rdfs:comment "'Intent report'" ;
    imo:intentOwner ex:IntentManagerXYZ ;
    imo:intentHandler ex:IntentManagerABC ;
-   icm:reportsAbout ex:B1_PriceSensitiveEnterprise_Biz_Intent1 ; 
-   icm:reportTimestamp [ t:inXSDDateTimeStamp "2022-12-01T10:30:10+10:00"^^xsd:dateTime ] ;
+   icm:reportsAbout ex:B1_PSE_Biz_Intent1 ; 
+   icm:reportTimestamp [ t:inXSDDateTimeStamp "'2022-12-01T10:30:10+10:00'"^^xsd:dateTime ] ;
    icm:currentIntentHandlingState icm:StateCompliant ;
    icm:currentIntentUpdateState icm:StateNoUpdate ;
    icm:reportNumber 1 ;
    icm:hasExpectationReport
+						ex:PSE_Exp_delivery_report,
+                        ex:PSE_Exp_property_report,
+                        ex:PSE_Exp_proposal_report,
+                        ex:PSE_Exp_reporting_report 
+.
+						
 # --- Delivery Expectation Report ----------
-    [ a icm:DeliveryExpectationReport ;
-        icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_delivery ;
+ex:PSE_Exp_delivery_report
+     a icm:DeliveryExpectationReport ;
+        icm:reportsAbout ex:PSE_Exp_delivery ;
         icm:targetReport inv:ConnectivityService_000001 ;
         icm:paramsCompliant 
 		  [ a icm:DeliveryParam ; 
-            icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_delivery_Param_type ;
+            icm:reportsAbout ex:PSE_Exp_delivery_Param_type ;
             icm:targetDescription cat:ConnectivityService_DynamicPrice ]
-    ] ,
+.
+
 # --- Propoerty Expectation Report ----------
-    [ a icm:PropertyExpectationReport ;
-        icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_proposal ; 
+ex:PSE_Exp_proposal_report
+      a icm:PropertyExpectationReport ;
+        icm:reportsAbout ex:PSE_Exp_proposal ; 
         icm:target inv:ConnectivityService_000001 ;
         icm:paramsCompliant 
 	      [ a icm:PropertyParam ;
-              icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_property_Param_price ; 
-              spot:price [spot:value "9.3" ; spot:unit spot:unitDollarHour ]
+              icm:reportsAbout ex:PSE_Exp_property_Param_price ; 
+              spot:price [spot:value "'9.3'" ; spot:unit spot:unitDollarHour ]
 		  ]
-    ] ,
-    [ a icm:PropertyExpectationReport ;
-        icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_property ; 
+.
+
+ex:PSE_Exp_property_report
+     a icm:PropertyExpectationReport ;
+        icm:reportsAbout ex:PSE_Exp_property ; 
         icm:target inv:ConnectivityService_000001 ;
         icm:paramsCompliant 
           [ a icm:PropertyParam ;
-              icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_property_Param_bandwidth ; 
-              met:bandwidth [ met:value "1" ; met:unit met:unitGBPS  ] 
+              icm:reportsAbout ex:PSE_Exp_property_Param_bandwidth ; 
+              met:bandwidth [ met:value "'1'" ; met:unit met:unitGBPS  ] 
           ] ,
           [ a icm:PropertyParam ;
-              icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_property_Param_fromLocation ; 
-              spot:startLocation [ icm:exactly "locationA" ] 
+              icm:reportsAbout ex:PSE_Exp_property_Param_fromLocation ; 
+              spot:startLocation [ icm:exactly "'locationA'" ] 
           ] ,
           [ a icm:PropertyParam ;
-              icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_property_Param_toLocation ; 
-              spot:endLocation [ icm:exactly "locationA" ] 
+              icm:reportsAbout ex:PSE_Exp_property_Param_toLocation ; 
+              spot:endLocation [ icm:exactly "'locationA'" ] 
           ] 
-	] ,
+.
+
 # --- Reporting Expectation Report ----------
-    [ a icm:ReportingExpectationReport ;
-        icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_reporting ; 
-        icm:target ex:B1_PriceSensitiveEnterprise_Biz_Intent1 ;
+ex:PSE_Exp_reporting_report
+      a icm:ReportingExpectationReport ;
+        icm:reportsAbout ex:PSE_Exp_reporting ; 
+        icm:target ex:B1_PSE_Biz_Intent1 ;
         icm:paramsCompliant 
         [ a icm:ReportingParam ;
 		    icm:reportsAbout ex:ExampleIntentXYZ_Exp_reporting_Param_interval ;
-            icm:reportingIntervalLeft [ a t:Duration ;  t:numericDuration 0 ;  t:temporalUnit t:unitMinute ]
+            icm:reportingIntervalLeft [ a t:Duration ;  t:numericDuration "'0'" ;  t:temporalUnit t:unitMinute ]
 		] ,
         [ a icm:ReportingParam ;
-		    icm:reportsAbout ex:PriceSensitiveEnterprise_Exp_reporting_Param_event ;
+		    icm:reportsAbout ex:PSE_Exp_reporting_Param_event ;
 			icm:reportingEvent icm:ReportingIntervalExpired
         ]
-    ] 
 .
-
 
