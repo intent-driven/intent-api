@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "CATALYST SLICE - NEST-EMBB and VIDEOSTREAMING",
+			"name": "CATALYST Service Definition",
 			"item": [
 				{
 					"name": "Aux",
@@ -231,6 +231,171 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "2A.- Backup - ADD - CONNECTIVITY_PTP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/iway-service-order-post-v1-hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"4\",\n    \"category\": \"Connectivity INFRASTRUCTURE\",\n    \"source\": \"POSTMAN\",\n    \"orderType\": \"CREATE\",\n    \"relatedParty\": [\n        {\n            \"id\": \"CONNECTIVITY_PTP\",\n            \"source\": \"BSS\",\n            \"name\": \"CONNECTIVITY_PTP\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"New\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"CONNECTIVITY_PTP\",\n                    \"version\": \"1.0\"\n                },\n                \"characteristics\": [\n                    {\n                        \"name\": \"delayTolerance\",\n                        \"value\": \"supported\"\n                    },\n                    {\n                        \"name\": \"ueMobilityLevel\",\n                        \"value\": \"5\"\n                    },\n                    {\n                        \"name\": \"availability\",\n                        \"value\": \"999900\"\n                    },\n                    {\n                        \"name\": \"countries\",\n                        \"value\": \"Portugal\"\n                    },\n                    {\n                        \"name\": \"regions\",\n                        \"value\": \"Lisboa\"\n                    },\n                    {\n                        \"name\": \"zones\",\n                        \"value\": \"Zone1\"\n                    },\n                    {\n                        \"name\": \"sliceType\",\n                        \"value\": \"EMBB\"\n                    },\n                    {\n                        \"name\": \"userEquipmentMaxDevices\",\n                        \"value\": \"700\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputSlice\",\n                        \"value\": \"3500\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"sampleFrequency\",\n                        \"value\": \"234\"\n                    },\n                    {\n                        \"name\": \"deviceVelocity\",\n                        \"value\": \"10\"\n                    },\n                    {\n                        \"name\": \"positioningAccuracy\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"positioningFrequency\",\n                        \"value\": \"30\"\n                    },\n                    {\n                        \"name\": \"radioSpectrum\",\n                        \"value\": \"5GNR_n01\"\n                    },\n                    {\n                        \"name\": \"SLA5QI\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"V2XCommunicationMode\",\n                        \"value\": \"NO\"\n                    },\n                    {\n                        \"name\": \"packetErrorRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"maxPacketLossRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputMaxSlice\",\n                        \"value\": \"100000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputMaxSlice\",\n                        \"value\": \"100\"\n                    },\n                    {\n                        \"name\": \"maxPacketSize\",\n                        \"value\": \"1500\"\n                    },\n                    {\n                        \"name\": \"latencyFromUFPToApplicationServer\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"missionCritical\",\n                        \"value\": \"No\"\n                    },\n                    {\n                        \"name\": \"userEquipmentDeviceDensity\",\n                        \"value\": \"12\"\n                    },\n                    {\n                        \"name\": \"PDUSessionsMax\",\n                        \"value\": \"123\"\n                    },\n                    {\n                        \"name\": \"authenticationAndAuthorization\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"NBIOT\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"nonIPTrafficSupport\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"userManagementOpenness\",\n                        \"value\": \"false\"\n                    }\n                ],\n                \"publicIdentifier\": \"CONNECTIVITY_PTP\"\n            },\n            \"id\": \"1\"\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Symphonica}}/service-order-manager/api/service-orders/",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"service-order-manager",
+										"api",
+										"service-orders",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1A.- ADD - ALLOCATE SLICE - NEST-EMBB for VideoStraming - RAN3 - CN3 - TN2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/iway-service-order-post-v1-hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"4\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"source\": \"POSTMAN\",\n    \"orderType\": \"CREATE\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"New\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"characteristics\": [\n                    {\n                        \"name\": \"delayTolerance\",\n                        \"value\": \"supported\"\n                    },\n                    {\n                        \"name\": \"ueMobilityLevel\",\n                        \"value\": \"5\"\n                    },\n                    {\n                        \"name\": \"availability\",\n                        \"value\": \"999900\"\n                    },\n                    {\n                        \"name\": \"countries\",\n                        \"value\": \"Portugal\"\n                    },\n                    {\n                        \"name\": \"regions\",\n                        \"value\": \"Lisboa\"\n                    },\n                    {\n                        \"name\": \"zones\",\n                        \"value\": \"Zone1\"\n                    },\n                    {\n                        \"name\": \"sliceType\",\n                        \"value\": \"EMBB\"\n                    },\n                    {\n                        \"name\": \"userEquipmentMaxDevices\",\n                        \"value\": \"700\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputSlice\",\n                        \"value\": \"3500\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"sampleFrequency\",\n                        \"value\": \"234\"\n                    },\n                    {\n                        \"name\": \"deviceVelocity\",\n                        \"value\": \"10\"\n                    },\n                    {\n                        \"name\": \"positioningAccuracy\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"positioningFrequency\",\n                        \"value\": \"30\"\n                    },\n                    {\n                        \"name\": \"radioSpectrum\",\n                        \"value\": \"5GNR_n01\"\n                    },\n                    {\n                        \"name\": \"SLA5QI\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"V2XCommunicationMode\",\n                        \"value\": \"NO\"\n                    },\n                    {\n                        \"name\": \"packetErrorRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"maxPacketLossRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputMaxSlice\",\n                        \"value\": \"100000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputMaxSlice\",\n                        \"value\": \"100\"\n                    },\n                    {\n                        \"name\": \"maxPacketSize\",\n                        \"value\": \"1500\"\n                    },\n                    {\n                        \"name\": \"latencyFromUFPToApplicationServer\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"missionCritical\",\n                        \"value\": \"No\"\n                    },\n                    {\n                        \"name\": \"userEquipmentDeviceDensity\",\n                        \"value\": \"12\"\n                    },\n                    {\n                        \"name\": \"PDUSessionsMax\",\n                        \"value\": \"123\"\n                    },\n                    {\n                        \"name\": \"authenticationAndAuthorization\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"NBIOT\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"nonIPTrafficSupport\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"userManagementOpenness\",\n                        \"value\": \"false\"\n                    }\n                ],\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": \"1\"\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Symphonica}}/service-order-manager/api/service-orders/",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"service-order-manager",
+										"api",
+										"service-orders",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1B.- DELETE - DEALLOCATE SLICE - NEST-EMBB for VideoStreaming",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/iway-service-order-post-v1-hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"1\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"orderType\": \"TERMINATE\",\n    \"source\": \"POSTMAN\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"Remove\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": 1\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Symphonica}}/service-order-manager/api/service-orders/",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"service-order-manager",
+										"api",
+										"service-orders",
+										""
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -275,7 +440,7 @@
 					"response": []
 				},
 				{
-					"name": "1B.- ADD - ALLOCATE SLICE - NEST-EMBB for VideoStraming - RAN3 - CN3 - TN2",
+					"name": "2A.- ADD - CONNECTIVITY_PTP",
 					"event": [
 						{
 							"listen": "test",
@@ -307,7 +472,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"4\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"source\": \"POSTMAN\",\n    \"orderType\": \"CREATE\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"New\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"characteristics\": [\n                    {\n                        \"name\": \"delayTolerance\",\n                        \"value\": \"supported\"\n                    },\n                    {\n                        \"name\": \"ueMobilityLevel\",\n                        \"value\": \"5\"\n                    },\n                    {\n                        \"name\": \"availability\",\n                        \"value\": \"999900\"\n                    },\n                    {\n                        \"name\": \"countries\",\n                        \"value\": \"Portugal\"\n                    },\n                    {\n                        \"name\": \"regions\",\n                        \"value\": \"Lisboa\"\n                    },\n                    {\n                        \"name\": \"zones\",\n                        \"value\": \"Zone1\"\n                    },\n                    {\n                        \"name\": \"sliceType\",\n                        \"value\": \"EMBB\"\n                    },\n                    {\n                        \"name\": \"userEquipmentMaxDevices\",\n                        \"value\": \"700\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputSlice\",\n                        \"value\": \"3500\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputUE\",\n                        \"value\": \"10000\"\n                    },\n                    {\n                        \"name\": \"sampleFrequency\",\n                        \"value\": \"234\"\n                    },\n                    {\n                        \"name\": \"deviceVelocity\",\n                        \"value\": \"10\"\n                    },\n                    {\n                        \"name\": \"positioningAccuracy\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"positioningFrequency\",\n                        \"value\": \"30\"\n                    },\n                    {\n                        \"name\": \"radioSpectrum\",\n                        \"value\": \"5GNR_n01\"\n                    },\n                    {\n                        \"name\": \"SLA5QI\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"V2XCommunicationMode\",\n                        \"value\": \"NO\"\n                    },\n                    {\n                        \"name\": \"packetErrorRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"maxPacketLossRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"downlinkThroughputMaxSlice\",\n                        \"value\": \"100000\"\n                    },\n                    {\n                        \"name\": \"uplinkThroughputMaxSlice\",\n                        \"value\": \"100\"\n                    },\n                    {\n                        \"name\": \"maxPacketSize\",\n                        \"value\": \"1500\"\n                    },\n                    {\n                        \"name\": \"latencyFromUFPToApplicationServer\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"missionCritical\",\n                        \"value\": \"No\"\n                    },\n                    {\n                        \"name\": \"userEquipmentDeviceDensity\",\n                        \"value\": \"12\"\n                    },\n                    {\n                        \"name\": \"PDUSessionsMax\",\n                        \"value\": \"123\"\n                    },\n                    {\n                        \"name\": \"authenticationAndAuthorization\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"NBIOT\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"nonIPTrafficSupport\",\n                        \"value\": \"false\"\n                    },\n                    {\n                        \"name\": \"userManagementOpenness\",\n                        \"value\": \"false\"\n                    }\n                ],\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": \"1\"\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
+							"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"4\",\n    \"category\": \"Connectivity INFRASTRUCTURE\",\n    \"source\": \"POSTMAN\",\n    \"orderType\": \"CREATE\",\n    \"relatedParty\": [\n        {\n            \"id\": \"CONNECTIVITY_PTP\",\n            \"source\": \"BSS\",\n            \"name\": \"CONNECTIVITY_PTP\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"New\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"CONNECTIVITY_PTP\",\n                    \"version\": \"1.0\"\n                },\n                \"characteristics\": [\n                    {\n                        \"name\": \"countries\",\n                        \"value\": \"USA\"\n                    },\n                    {\n                        \"name\": \"regions\",\n                        \"value\": \"StateX\"\n                    },\n                    {\n                        \"name\": \"zones\",\n                        \"value\": \"Zone1\"\n                    },\n                    {\n                        \"name\": \"availability\",\n                        \"value\": \"999900\"\n                    },\n                    {\n                        \"name\": \"maxPacketLossRate\",\n                        \"value\": \"Premmium\"\n                    },\n                    {\n                        \"name\": \"bandwith\",\n                        \"value\": \"1\"\n                    },\n                    {\n                        \"name\": \"jitter\",\n                        \"value\": \"30\"\n                    },\n                    {\n                        \"name\": \"latency\",\n                        \"value\": \"2\"\n                    }\n                ],\n                \"places\": [\n                    {\n                        \"name\": \"SiteA\",\n                        \"role\": \"Role\",\n                        \"address\": {\n                            \"streetName\": \"Street Name\",\n                            \"streetType\": \"\",\n                            \"streetNumber\": \"Street Number\",\n                            \"streetNumberSuffix\": \"\",\n                            \"streetNumberLastSuffix\": \"\",\n                            \"streetSuffix\": \"\",\n                            \"postCode\": \"\",\n                            \"locality\": \"Locality\",\n                            \"city\": \"City\",\n                            \"stateOrProvince\": \"State\",\n                            \"country\": \"United States\"\n                        },\n                        \"location\": {\n                            \"type\": \"Feature\",\n                            \"geometry\": {\n                                \"type\": \"Point\",\n                                \"coordinates\": [\n                                    12.12,\n                                    14.14\n                                ]\n                            },\n                            \"properties\": {}\n                        }\n                    },\n                    {\n                        \"name\": \"SiteB\",\n                        \"role\": \"Role\",\n                        \"address\": {\n                            \"streetName\": \"Street Name\",\n                            \"streetType\": \"\",\n                            \"streetNumber\": \"Street Number\",\n                            \"streetNumberSuffix\": \"\",\n                            \"streetNumberLastSuffix\": \"\",\n                            \"streetSuffix\": \"\",\n                            \"postCode\": \"\",\n                            \"locality\": \"Locality\",\n                            \"city\": \"City\",\n                            \"stateOrProvince\": \"State\",\n                            \"country\": \"United States\"\n                        },\n                        \"location\": {\n                            \"type\": \"Feature\",\n                            \"geometry\": {\n                                \"type\": \"Point\",\n                                \"coordinates\": [\n                                    12.12,\n                                    14.14\n                                ]\n                            },\n                            \"properties\": {}\n                        }\n                    }\n                ],\n                \"publicIdentifier\": \"CONNECTIVITY_PTP\"\n            },\n            \"id\": \"1\"\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -330,7 +495,7 @@
 					"response": []
 				},
 				{
-					"name": "2B.- DELETE - DEALLOCATE SLICE - NEST-EMBB for VideoStreaming",
+					"name": "2B.- DELETE - CONNECTIVITY_PTP",
 					"event": [
 						{
 							"listen": "test",
@@ -362,7 +527,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"1\",\n    \"category\": \"INFRASTRUCTURE\",\n    \"orderType\": \"TERMINATE\",\n    \"source\": \"POSTMAN\",\n    \"relatedParty\": [\n        {\n            \"id\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"source\": \"BSS\",\n            \"name\": \"NEST_AND_VIDEOSTREAMING_5G\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"Remove\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"NEST-EMBB-VIDEOSTREAMING\",\n                    \"version\": \"1.0\"\n                },\n                \"publicIdentifier\": \"NEST-EMBB_VIDEOSTREAMING_INSIDE_VENUE_5G\"\n            },\n            \"id\": 1\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
+							"raw": "{\n    \"externalId\": \"external-ID_SentToNBI_BSS_ID\",\n    \"priority\": \"1\",\n    \"category\": \"Connectivity INFRASTRUCTURE\",\n    \"orderType\": \"TERMINATE\",\n    \"source\": \"POSTMAN\",\n    \"relatedParty\": [\n        {\n            \"id\": \"CONNECTIVITY_PTP\",\n            \"source\": \"BSS\",\n            \"name\": \"CONNECTIVITY_PTP\",\n            \"role\": \"customer\"\n        }\n    ],\n    \"orderItems\": [\n        {\n            \"action\": \"Remove\",\n            \"service\": {\n                \"serviceSpecification\": {\n                    \"code\": \"CONNECTIVITY_PTP\",\n                    \"version\": \"1.0\"\n                },\n                \"publicIdentifier\": \"CONNECTIVITY_PTP\"\n            },\n            \"id\": 1\n        }\n    ],\n    \"extraValues\": [\n        {\n            \"name\": \"idan\",\n            \"value\": \"true\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -487,6 +652,881 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Query Catalog",
+			"item": [
+				{
+					"name": "Query Catalog CFS",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//pm.globals.set(\"rql_query\", \"rql=limit(0,265),and(eq(resourceName,NOKIA-NFM-P-OPELIKA),eq(status,COMPLETED)),and(gt(startTime,2020-12-14T03:00:00.000Z),lt(startTime,2020-12-16T03:00:00.000Z))\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Capturo la respuesta y busco el ID para Guardarlo\r",
+									"//var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"//pm.globals.set(\"totalElements\", jsonData.page.totalElements);\r",
+									"//var totalElements = pm.variables.get(\"totalElements\");\r",
+									"//console.log(\"Total de Elementos:\",totalElements,jsonData.content.length);\r",
+									"\r",
+									"////Busco y reemplazo\r",
+									"//for(var i = 0; i < jsonData.content.length; i++) {\r",
+									"//for(var j = 0; j < jsonData.content[i].inputParameters.length; j++) {\r",
+									"//if(jsonData.content[i].inputParameters[j].name == \"network\") {\r",
+									"//console.log(jsonData.content[i].inputParameters[j].value,jsonData.content[i].connectorOrderExecutionTimeInMillis);\r",
+									"//}\r",
+									"//}\r",
+									"//}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "text/plain"
+							},
+							{
+								"key": "X-Authorization",
+								"type": "text",
+								"value": "{{TOKENSSO}}"
+							},
+							{
+								"key": "X-Organization-Code",
+								"value": "{{OrganizationCode}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_Symphonica}}/catalog-manager/api/service-specifications/?rql=and(eq(type,CFS),eq(name,string:CONNECTIVITY_PTP)),limit(0,20)",
+							"host": [
+								"{{URL_Symphonica}}"
+							],
+							"path": [
+								"catalog-manager",
+								"api",
+								"service-specifications",
+								""
+							],
+							"query": [
+								{
+									"key": "rql",
+									"value": "and(eq(type,CFS),eq(name,string:CONNECTIVITY_PTP)),limit(0,20)"
+								}
+							]
+						},
+						"description": "Autenticación para obtener Token para el API del SOM de Symphonica"
+					},
+					"response": []
+				},
+				{
+					"name": "Query Catalog RFS",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//pm.globals.set(\"rql_query\", \"rql=limit(0,265),and(eq(resourceName,NOKIA-NFM-P-OPELIKA),eq(status,COMPLETED)),and(gt(startTime,2020-12-14T03:00:00.000Z),lt(startTime,2020-12-16T03:00:00.000Z))\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Capturo la respuesta y busco el ID para Guardarlo\r",
+									"//var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"//pm.globals.set(\"totalElements\", jsonData.page.totalElements);\r",
+									"//var totalElements = pm.variables.get(\"totalElements\");\r",
+									"//console.log(\"Total de Elementos:\",totalElements,jsonData.content.length);\r",
+									"\r",
+									"////Busco y reemplazo\r",
+									"//for(var i = 0; i < jsonData.content.length; i++) {\r",
+									"//for(var j = 0; j < jsonData.content[i].inputParameters.length; j++) {\r",
+									"//if(jsonData.content[i].inputParameters[j].name == \"network\") {\r",
+									"//console.log(jsonData.content[i].inputParameters[j].value,jsonData.content[i].connectorOrderExecutionTimeInMillis);\r",
+									"//}\r",
+									"//}\r",
+									"//}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "text/plain"
+							},
+							{
+								"key": "X-Authorization",
+								"type": "text",
+								"value": "{{TOKENSSO}}"
+							},
+							{
+								"key": "X-Organization-Code",
+								"value": "{{OrganizationCode}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_Symphonica}}/catalog-manager/api/service-specifications/?rql=and(eq(type,RFS),eq(name,string:CN3))",
+							"host": [
+								"{{URL_Symphonica}}"
+							],
+							"path": [
+								"catalog-manager",
+								"api",
+								"service-specifications",
+								""
+							],
+							"query": [
+								{
+									"key": "rql",
+									"value": "and(eq(type,RFS),eq(name,string:CN3))"
+								}
+							]
+						},
+						"description": "Autenticación para obtener Token para el API del SOM de Symphonica"
+					},
+					"response": []
+				},
+				{
+					"name": "Query Catalog RES",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//pm.globals.set(\"rql_query\", \"rql=limit(0,265),and(eq(resourceName,NOKIA-NFM-P-OPELIKA),eq(status,COMPLETED)),and(gt(startTime,2020-12-14T03:00:00.000Z),lt(startTime,2020-12-16T03:00:00.000Z))\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Capturo la respuesta y busco el ID para Guardarlo\r",
+									"//var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"//pm.globals.set(\"totalElements\", jsonData.page.totalElements);\r",
+									"//var totalElements = pm.variables.get(\"totalElements\");\r",
+									"//console.log(\"Total de Elementos:\",totalElements,jsonData.content.length);\r",
+									"\r",
+									"////Busco y reemplazo\r",
+									"//for(var i = 0; i < jsonData.content.length; i++) {\r",
+									"//for(var j = 0; j < jsonData.content[i].inputParameters.length; j++) {\r",
+									"//if(jsonData.content[i].inputParameters[j].name == \"network\") {\r",
+									"//console.log(jsonData.content[i].inputParameters[j].value,jsonData.content[i].connectorOrderExecutionTimeInMillis);\r",
+									"//}\r",
+									"//}\r",
+									"//}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "text/plain"
+							},
+							{
+								"key": "X-Authorization",
+								"type": "text",
+								"value": "{{TOKENSSO}}"
+							},
+							{
+								"key": "X-Organization-Code",
+								"value": "{{OrganizationCode}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_Symphonica}}/catalog-manager/api/resource-specifications/?rql=and(eq(type,DEVICE),eq(name,string:ROUTER))",
+							"host": [
+								"{{URL_Symphonica}}"
+							],
+							"path": [
+								"catalog-manager",
+								"api",
+								"resource-specifications",
+								""
+							],
+							"query": [
+								{
+									"key": "rql",
+									"value": "and(eq(type,DEVICE),eq(name,string:ROUTER))"
+								}
+							]
+						},
+						"description": "Autenticación para obtener Token para el API del SOM de Symphonica"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification Manager",
+			"item": [
+				{
+					"name": "Inventory",
+					"item": [
+						{
+							"name": "Resource",
+							"item": [
+								{
+									"name": "Subscribe - ResourceCreationNotification",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Organization-Code",
+												"value": "{{OrganizationCode}}"
+											},
+											{
+												"key": "X-Authorization",
+												"value": "{{TOKENSSO}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"subscriberCode\": \"Internal_Test\",\n    \"serviceName\": \"inventory-manager\",\n    \"eventName\": \"ResourceCreationNotification\",\n    \"subscriptionType\": \"HTTP\",\n    \"subscriptionInformation\":{\n        \"httpUri\": \"http://localhost:9001/\",\n        \"httpMethod\": \"POST\",\n        \"retries\": 3,\n        \"retryIntervalInMs\": 30000,\n        \"timeoutInMs\": 3000\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_Symphonica}}/notification-service/api/subscriber",
+											"host": [
+												"{{URL_Symphonica}}"
+											],
+											"path": [
+												"notification-service",
+												"api",
+												"subscriber"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Subscribe - ResourceAttributeValueChangeNotification",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Organization-Code",
+												"value": "{{OrganizationCode}}"
+											},
+											{
+												"key": "X-Authorization",
+												"value": "{{TOKENSSO}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"subscriberCode\": \"Internal_Test\",\n    \"serviceName\": \"inventory-manager\",\n    \"eventName\": \"ResourceAttributeValueChangeNotification\",\n    \"subscriptionType\": \"HTTP\",\n    \"subscriptionInformation\":{\n        \"httpUri\": \"http://localhost:9001/\",\n        \"httpMethod\": \"POST\",\n        \"retries\": 3,\n        \"retryIntervalInMs\": 30000,\n        \"timeoutInMs\": 3000\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_Symphonica}}/notification-service/api/subscriber",
+											"host": [
+												"{{URL_Symphonica}}"
+											],
+											"path": [
+												"notification-service",
+												"api",
+												"subscriber"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Subscribe - ResourceRemoveNotification",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Organization-Code",
+												"value": "{{OrganizationCode}}"
+											},
+											{
+												"key": "X-Authorization",
+												"value": "{{TOKENSSO}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"subscriberCode\": \"Internal_Test\",\n    \"serviceName\": \"inventory-manager\",\n    \"eventName\": \"ResourceRemoveNotification\",\n    \"subscriptionType\": \"HTTP\",\n    \"subscriptionInformation\":{\n        \"httpUri\": \"http://localhost:9001/\",\n        \"httpMethod\": \"POST\",\n        \"retries\": 3,\n        \"retryIntervalInMs\": 30000,\n        \"timeoutInMs\": 3000\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_Symphonica}}/notification-service/api/subscriber",
+											"host": [
+												"{{URL_Symphonica}}"
+											],
+											"path": [
+												"notification-service",
+												"api",
+												"subscriber"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Subscribe - ResourceStateChangeNotification",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Organization-Code",
+												"value": "{{OrganizationCode}}"
+											},
+											{
+												"key": "X-Authorization",
+												"value": "{{TOKENSSO}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"subscriberCode\": \"Internal_Test\",\n    \"serviceName\": \"inventory-manager\",\n    \"eventName\": \"ResourceStateChangeNotification\",\n    \"subscriptionType\": \"HTTP\",\n    \"subscriptionInformation\":{\n        \"httpUri\": \"http://localhost:9001/\",\n        \"httpMethod\": \"POST\",\n        \"retries\": 3,\n        \"retryIntervalInMs\": 30000,\n        \"timeoutInMs\": 3000\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_Symphonica}}/notification-service/api/subscriber",
+											"host": [
+												"{{URL_Symphonica}}"
+											],
+											"path": [
+												"notification-service",
+												"api",
+												"subscriber"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Service",
+							"item": [
+								{
+									"name": "Subscribe - ServiceCreationNotification",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Organization-Code",
+												"value": "{{OrganizationCode}}"
+											},
+											{
+												"key": "X-Authorization",
+												"value": "{{TOKENSSO}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"subscriberCode\": \"Internal_Test\",\n    \"serviceName\": \"INVENTORY-MANAGER\",\n    \"eventName\": \"ServiceCreationNotification\",\n    \"subscriptionType\": \"HTTP\",\n    \"subscriptionInformation\":{\n        \"httpUri\": \"http://localhost:9000/\",\n        \"httpMethod\": \"POST\",\n        \"retries\": 3,\n        \"retryIntervalInMs\": 30000,\n        \"timeoutInMs\": 3000\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_Symphonica}}/notification-service/api/subscriber",
+											"host": [
+												"{{URL_Symphonica}}"
+											],
+											"path": [
+												"notification-service",
+												"api",
+												"subscriber"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Subscribe - ServiceRemoveNotification",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Organization-Code",
+												"value": "{{OrganizationCode}}"
+											},
+											{
+												"key": "X-Authorization",
+												"value": "{{TOKENSSO}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"subscriberCode\": \"Internal_Test\",\n    \"serviceName\": \"INVENTORY-MANAGER\",\n    \"eventName\": \"ServiceRemoveNotification\",\n    \"subscriptionType\": \"HTTP\",\n    \"subscriptionInformation\":{\n        \"httpUri\": \"http://localhost:9000/\",\n        \"httpMethod\": \"POST\",\n        \"retries\": 3,\n        \"retryIntervalInMs\": 30000,\n        \"timeoutInMs\": 3000\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_Symphonica}}/notification-service/api/subscriber",
+											"host": [
+												"{{URL_Symphonica}}"
+											],
+											"path": [
+												"notification-service",
+												"api",
+												"subscriber"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Subscribe - ServiceStateChangeNotification",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Organization-Code",
+												"value": "{{OrganizationCode}}"
+											},
+											{
+												"key": "X-Authorization",
+												"value": "{{TOKENSSO}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"subscriberCode\": \"Internal_Test\",\n    \"serviceName\": \"INVENTORY-MANAGER\",\n    \"eventName\": \"ServiceStateChangeNotification\",\n    \"subscriptionType\": \"HTTP\",\n    \"subscriptionInformation\":{\n        \"httpUri\": \"http://localhost:9000/\",\n        \"httpMethod\": \"POST\",\n        \"retries\": 3,\n        \"retryIntervalInMs\": 30000,\n        \"timeoutInMs\": 3000\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_Symphonica}}/notification-service/api/subscriber",
+											"host": [
+												"{{URL_Symphonica}}"
+											],
+											"path": [
+												"notification-service",
+												"api",
+												"subscriber"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "ServiceOrderManager",
+					"item": [
+						{
+							"name": "Subscribe - SERVICE-ORDER.CREATED",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"subscriberCode\": \"Internal_Test\",\n    \"serviceName\": \"service-order-manager\",\n    \"eventName\": \"SERVICE-ORDER.CREATED\",\n    \"subscriptionType\": \"HTTP\",\n    \"subscriptionInformation\":{\n        \"httpUri\": \"http://ec2-3-90-142-157.compute-1.amazonaws.com:3333/\",\n        \"httpMethod\": \"POST\",\n        \"retries\": 3,\n        \"retryIntervalInMs\": 30000,\n        \"timeoutInMs\": 3000\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Symphonica}}/notification-service/api/subscriber",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"notification-service",
+										"api",
+										"subscriber"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Subscribe - SERVICE-ORDER.STATE-CHANGED",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"subscriberCode\": \"Internal_Test\",\n    \"serviceName\": \"service-order-manager\",\n    \"eventName\": \"SERVICE-ORDER.STATE-CHANGED\",\n    \"subscriptionType\": \"HTTP\",\n    \"subscriptionInformation\":{\n        \"httpUri\": \"http://ec2-3-90-142-157.compute-1.amazonaws.com:3333/\",\n        \"httpMethod\": \"POST\",\n        \"retries\": 3,\n        \"retryIntervalInMs\": 30000,\n        \"timeoutInMs\": 3000\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Symphonica}}/notification-service/api/subscriber",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"notification-service",
+										"api",
+										"subscriber"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unsubscribe",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Organization-Code",
+										"value": "{{OrganizationCode}}"
+									},
+									{
+										"key": "X-Authorization",
+										"value": "{{TOKENSSO}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/iway-ns-api-subscriber-post-v1-hal+json"
+									}
+								],
+								"url": {
+									"raw": "https://{{URL_Symphonica}}/notification-service/api/subscriber/700eafa8a192c649dfc9ae386e331bbb3a9ae85cccf40b99a8d43391c9888210",
+									"protocol": "https",
+									"host": [
+										"{{URL_Symphonica}}"
+									],
+									"path": [
+										"notification-service",
+										"api",
+										"subscriber",
+										"700eafa8a192c649dfc9ae386e331bbb3a9ae85cccf40b99a8d43391c9888210"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "0.- LoginSSO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"postman.setEnvironmentVariable(\"TOKENSSO\", JSON.parse(responseBody)._embedded.session.token);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{user}}\",\r\n  \"password\": \"{{pass}}\",\r\n  \"source\": \"{{origin}}\",\r\n  \"idOrigin\": \"0.0.0.0\"\r\n}"
+				},
+				"url": {
+					"raw": "{{URL_Symphonica}}/sso_rest/authentication/login",
+					"host": [
+						"{{URL_Symphonica}}"
+					],
+					"path": [
+						"sso_rest",
+						"authentication",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
